@@ -27,7 +27,7 @@ namespace STSLite.Core.Runs
             // TODO:
         }
 
-        public static Player CreateForNewRun(CharacterDefinition character, ulong netId)
+        public static Player? CreateForNewRun(CharacterDefinition character, ulong netId)
         {
             Player player = new Player(
                     character: character,

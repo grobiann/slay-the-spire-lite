@@ -1,4 +1,6 @@
+using STSLite.Core.Maps;
 using STSLite.Core.Models;
+using STSLite.Core.Random;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,11 +23,6 @@ namespace STSLite.Core.Runs
         {
             PileType = pileType;
         }
-    }
-
-    public class Rng
-    {
-
     }
 
     public class RunRngSet

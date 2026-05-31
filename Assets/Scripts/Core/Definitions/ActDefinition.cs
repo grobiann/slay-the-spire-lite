@@ -6,6 +6,9 @@ namespace STSLite.Core.Models
     public class ActDefinition : AbstractDefinition
     {
         public string Title;
+        public int MapHeight = 15;
+        public int NumberOfWeekEncounters = 3;
+        public int NumberOfRooms = 3;
 
         public static IReadOnlyList<ActDefinition> GetDefaultList()
         {

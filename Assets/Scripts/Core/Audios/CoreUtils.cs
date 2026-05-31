@@ -26,5 +26,11 @@ namespace STSLite.Core
             string input = mWhitespaceRegex.Replace(text.ToUpperInvariant(), "_");
             return mSpecialCharRegex.Replace(input, "");
         }
+
+        public static int GetDeterministicHashCode(string str)
+        {
+            // TODO:
+            return str.GetHashCode();
+        }
     }
 }

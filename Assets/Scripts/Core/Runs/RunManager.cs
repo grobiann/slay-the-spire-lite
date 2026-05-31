@@ -1,5 +1,7 @@
 using Cysharp.Threading.Tasks;
+using STSLite.Core.Maps;
 using STSLite.Core.Models;
+using STSLite.Core.Random;
 using STSLite.UI;
 using System;
 
@@ -24,13 +26,14 @@ namespace STSLite.Core.Runs
 
         public RunState RunState { get; set; }
 
-        public event Action OnRoomEntered;
-        public event Action OnRoomExited;
-        public event Action OnActEntered;
+        public event Action? OnRoomEntered;
+        public event Action? OnRoomExited;
+        public event Action? OnActEntered;
 
 
         public void SetupNewSinglePlayer(RunState runState)
         {
+            RunState = runState;
         }
 
         public void SetupSavedSinglePlayer(RunState runState)
@@ -84,7 +87,8 @@ namespace STSLite.Core.Runs
 
         private async UniTask GenerateMap()
         {
-            ActMap map = new ActMap();
+            // TODO: Set rng
+            ActMap map = new StandardActMap(DefinitionDB.Act<Act1>(), new Rng());
             RunState.Map = map;
             //RunState.RemoveStaleVisitedMapCoords(map);
 

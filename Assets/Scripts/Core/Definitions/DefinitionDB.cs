@@ -208,9 +208,4 @@ namespace STSLite.Core.Models
 
         public async UniTask Exit() { }
     }
-
-    public class ActMap
-    {
-
-    }
 }
