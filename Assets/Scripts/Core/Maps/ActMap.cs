@@ -52,9 +52,9 @@ namespace STSLite.Core.Maps
             }
         }
 
-        public MapPoint? GetPoint(Vector2Int coord)
+        public MapPoint? GetPoint(MapCoord coord)
         {
-            return GetPoint(coord.x, coord.y);
+            return GetPoint(coord.X, coord.Y);
         }
 
         protected MapPoint? GetPoint(int column, int row)
@@ -76,6 +76,11 @@ namespace STSLite.Core.Maps
             }
 
             return null;
+        }
+
+        public bool ContainsCoord(MapCoord coord)
+        {
+            return GetPoint(coord) != null;
         }
     }
 }

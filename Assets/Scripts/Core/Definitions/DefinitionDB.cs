@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -195,17 +194,5 @@ namespace STSLite.Core.Models
 
     public class MapRoomDefinition : RoomDefinition
     {
-    }
-
-    public class Room
-    {
-        public RoomDefinition Definition { get; }
-
-        public Room(RoomDefinition definition)
-        {
-            Definition = definition;
-        }
-
-        public async UniTask Exit() { }
     }
 }

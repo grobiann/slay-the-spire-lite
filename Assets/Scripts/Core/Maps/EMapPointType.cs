@@ -11,4 +11,17 @@ namespace STSLite.Core.Maps
         Ancient,  // Starting point
         Unknown
     }
+
+    public enum ERoomType
+    {
+        Unassigned,
+        NormalMonster,
+        EliteMonster,
+        BossMonster,
+        Treasure,
+        Shop,
+        Event,
+        RestSite,
+        Map
+    }
 }

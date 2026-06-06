@@ -11,6 +11,7 @@ namespace STSLite.UI
             { typeof(UITopBar), new UIInfo("Prefabs/UI/TopBar", 10) },
             { typeof(UILogo), new UIInfo("Prefabs/UI/UILogoWindow", 100) },
             { typeof(UIMapScreen), new UIInfo("Prefabs/UI/MapScreen/UIMapScreenWindow", 100) },
+            { typeof(UICombatRoom), new UIInfo("Prefabs/UI/Room/UICombatRoomWindow", 200) },
             { typeof(UIBlackScreen), new UIInfo("Prefabs/UI/UIBlackScreenWindow", 1000) },
         };
 

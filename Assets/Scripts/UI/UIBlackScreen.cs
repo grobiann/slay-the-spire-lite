@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace STSLite.UI
 {
-
     public class UIBlackScreen : UIBase
     {
         public static UIBlackScreen Instance { get; private set; }

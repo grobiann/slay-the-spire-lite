@@ -2,8 +2,11 @@ using Cysharp.Threading.Tasks;
 using STSLite.Core.Maps;
 using STSLite.Core.Models;
 using STSLite.Core.Random;
+using STSLite.Core.Saves;
 using STSLite.UI;
 using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace STSLite.Core.Runs
 {
@@ -58,12 +61,12 @@ namespace STSLite.Core.Runs
                 //    {
                 //        NMapScreen.Instance?.InitMarker(State.Map.StartingMapPoint.coord);
                 //    }
-                //    await EnterMapCoord(State.Map.StartingMapPoint.coord);
+                await EnterMapCoord(RunState.Map.StartingMapPoint.Coord);
                 //    NMapScreen.Instance?.RefreshAllMapPointVotes();
                 //}
                 //else
                 {
-                    await EnterRoomInternal(new Room(DefinitionDB.Room<MapRoomDefinition>()));
+                    //await EnterRoomInternal(null);  // TODO: Create room instance
                     this.OnActEntered?.Invoke();
                     await UIBlackScreen.Off(UIBlackScreen.DEFAULT_FADE_DURATION);
                 }
@@ -97,16 +100,129 @@ namespace STSLite.Core.Runs
             uiMapScreen.ClearDrawings();
         }
 
+
+        private async UniTask EnterMapCoord(MapCoord coord)
+        {
+            if (!RunState.Map.ContainsCoord(coord))
+            {
+                throw new Exception($"Attempted to enter invalid map coord {coord}");
+            }
+            MapPoint mapPoint = RunState.Map.GetPoint(coord);
+            //NMapScreen.Instance?.InitMarker(coord);
+            //NMapScreen.Instance?.RefreshAllMapPointVotes();
+            await EnterMapPointInternal(coord.Row + 1, mapPoint.PointType);
+        }
+
+        private async UniTask EnterMapPointInternal(int actFloor, EMapPointType pointType)
+        {
+            // using(new NetLoadingHandle(NetService))
+            {
+                //if (State.MapPointHistory.Count > 0)
+                //{
+                //    UpdatePlayerStatsInMapPointHistory();
+                //}
+                RunState.ActFloor = actFloor;
+                await ExitCurrentRooms();
+                //if (preFinishedRoom == null)
+                //{
+                //    CombatStateSynchronizer.StartSync();
+                //}
+                ClearScreens();
+                //if (preFinishedRoom == null)
+                //{
+                //    await CombatStateSynchronizer.WaitForSync();
+                //}
+                //if (saveGame)
+                //{
+                //    await SaveManager.Instance.SaveRun(null);
+                //}
+                //if (CombatReplayWriter.IsEnabled)
+                //{
+                //    CombatReplayWriter.RecordInitialState(ToSave(null));
+                //}
+                //RoomType roomType;
+                //if (pointType == EMapPointType.Unknown && preFinishedRoom != null)
+                //{
+                //    roomType = RoomType.Monster;
+                //}
+                //else
+                //{
+                //HashSet<ERoomType> blacklist = BuildRoomTypeBlacklist(State.CurrentMapPointHistoryEntry, State.CurrentMapPoint?.Children ?? new HashSet<MapPoint>());
+                HashSet<ERoomType> blacklist = new HashSet<ERoomType>();
+                ERoomType roomType = RollRoomTypeFor(pointType, blacklist);
+                //}
+                Room room = CreateRoom(roomType, pointType);
+                //AbstractRoom abstractRoom = ((preFinishedRoom == null) ? CreateRoom(roomType, pointType) : preFinishedRoom);
+                //ActionExecutor.Pause();
+                //if (preFinishedRoom == null)
+                //{
+                //    State.AppendToMapPointHistory(pointType, abstractRoom.RoomType, abstractRoom.ModelId);
+                //}
+                //if (abstractRoom is CombatRoom { IsPreFinished: not false, ParentEventId: not null } combatRoom)
+                //{
+                //    EventRoom room = new EventRoom(ModelDb.GetById<EventModel>(combatRoom.ParentEventId));
+                //    await EnterRoomInternal(room, isRestoringRoomStackBase: true);
+                //    await EnterRoomInternal(combatRoom);
+                //}
+                //else
+                //{
+                await EnterRoomInternal(room);
+                //}
+                //if (NRun.Instance != null)
+                //{
+                //    NRun.Instance.GlobalUi.MapScreen.IsTraveling = false;
+                //}
+                //AfterMapLocationChanged();
+                await UIBlackScreen.Off();
+                //await FadeIn();
+            }
+        }
+
+        private ERoomType RollRoomTypeFor(EMapPointType pointType, HashSet<ERoomType> blacklist)
+        {
+            return pointType switch
+            {
+                EMapPointType.NormalMonster => ERoomType.NormalMonster,
+                EMapPointType.EliteMonster => ERoomType.EliteMonster,
+                EMapPointType.BossMonster => ERoomType.BossMonster,
+                EMapPointType.Shop => ERoomType.Shop,
+                EMapPointType.Rest => ERoomType.RestSite,
+                EMapPointType.Ancient => ERoomType.Event,
+                EMapPointType.Unknown => RunState.OddsSet.UnknownMapPoint.Roll(blacklist, RunState),
+                _ => throw new Exception($"Unsupported map point type {pointType}")
+            };
+        }
+
+        private Room CreateRoom(ERoomType roomType, EMapPointType pointType)
+        {
+            return new CombatRoom(RunState);
+            switch (roomType)
+            {
+                case ERoomType.NormalMonster:
+                case ERoomType.EliteMonster:
+                case ERoomType.BossMonster:
+                    //return new CombatRoom();
+                case ERoomType.Shop:
+                    return new MerchantRoom();
+                case ERoomType.RestSite:
+                    return new RestRoom();
+                case ERoomType.Event:
+                    return new EventRoom();
+                default:
+                    throw new Exception($"Unsupported room type {roomType}");
+            }
+        }
+
         private async UniTask EnterRoomInternal(Room room)
         {
-            //RunState.PushCurrentRoom(room);
-            //await room.Enter();
-            //this.OnRoomEntered?.Invoke();
+            RunState.PushRoom(room);
+            await room.Enter(RunState);
+            this.OnRoomEntered?.Invoke();
         }
 
         private async UniTask ExitCurrentRooms()
         {
-            while(RunState.CurrentRoomCount > 0)
+            while (RunState.CurrentRoomCount > 0)
             {
                 await ExitCurrentRoom();
             }
