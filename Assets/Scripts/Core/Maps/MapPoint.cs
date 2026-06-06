@@ -10,7 +10,7 @@ namespace STSLite.Core.Maps
         public MapCoord Coord { get; private set; }
         public readonly HashSet<MapPoint> Parents;
         public readonly HashSet<MapPoint> Children;
-        public EMapPointType PointType { get; set; }
+        public MapPointType PointType { get; set; }
         public bool CanBeModified { get; set; } = true;
 
         public bool Equals(MapPoint other)

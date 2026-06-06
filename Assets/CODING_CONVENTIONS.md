@@ -35,54 +35,55 @@ This is a project-local, indexed rewrite of the referenced standard. It keeps th
 9. Use `ALL_CAPS_SEPARATED_BY_UNDERSCORE` for `static readonly` fields that behave like constants.
 10. Use `readonly` when a variable should only be assigned once.
 11. Use PascalCase for namespaces.
-12. Prefix boolean variables with `b`; use `mb` for private boolean member variables.
+12. Do not prefix boolean variables with `b`; use natural boolean names such as `isReady`, `hasFocus`, `shouldClose`, or `canStart`.
 13. Prefix boolean properties with `Is`, `Can`, `Should`, or `Has`.
 14. Prefix interface names with `I`.
-15. Prefix enum names with `E`.
+15. Do not prefix enum names with `E`; use plain PascalCase names.
 16. Prefix struct names with `S`, except for `readonly struct`.
-17. Prefix private member variables with `m`, then use PascalCase for the rest of the name.
-18. Name methods with return values after the value they return.
-19. Prefer descriptive variable names. Use very short names only for trivial loop indices.
-20. Capitalize acronyms fully only when no normal word follows them; otherwise use normal PascalCase acronym casing.
-21. Prefer properties over getter and setter methods.
-22. Declare local variables near their first use.
-23. Specify floating-point precision explicitly unless `double` is intended.
-24. Always include a `default` case in `switch` statements.
-25. If a `switch` `default` should be unreachable, fail loudly with `Debug.Fail()`.
-26. Use `Debug.Assert()` for assumptions made while writing code.
-27. End recursive method names with `Recursive`.
-28. Order class contents as member variables, properties, constructors, then methods; order methods from public to private.
-29. Group related member variables and methods together.
-30. Avoid overloads when parameter types are too general; use explicit names instead.
-31. Keep each class in its own file unless grouping small related classes is clearer.
-32. Match the source filename to the class name, including casing.
-33. For partial classes, name each file with the class name plus a dot and subsection name.
-34. Use assertions for unrecoverable assumptions.
-35. End bitflag enum names with `Flags`.
-36. Prefer overloading over default parameters.
-37. If default parameters are used, limit them to natural immutable values such as `null`, `false`, or `0`.
-38. Do not shadow variables.
-39. Prefer generic containers from `System.Collections.Generic`; arrays are fine when they are the natural choice.
-40. Prefer explicit types over `var` unless the type is unimportant, such as anonymous types or some `IEnumerable` cases.
-41. Use static classes instead of singleton patterns.
-42. Use `async Task` instead of `async void`, except for event handlers.
-43. Do not add an `Async` suffix to async method names.
-44. Validate external data at the boundary, then assume internal data is valid.
-45. Do not throw exceptions from non-boundary methods; handle exceptions at boundaries.
-46. Exception throwing is allowed in `switch` defaults used to catch missing enum handling; do not catch those exceptions.
-47. Prefer not to allow `null` parameters, especially in public methods.
-48. If a parameter can be `null`, suffix the name with `OrNull`.
-49. Prefer not to return `null`, especially from public methods, unless it avoids throwing.
-50. If a method can return `null`, suffix the method name with `OrNull`.
-51. Use inline lambdas only for simple single statements.
-52. Avoid object initializers unless they are used with `required` and init-only setters.
-53. Declare `out` variables on a separate line before the call.
-54. Do not use the null-coalescing operator.
-55. Do not use `using` declarations; use `using` statements.
-56. Specify the type after `new`, except for anonymous types inside functions.
-57. Use `private init` setters wherever possible.
-58. Use file-scoped namespace declarations.
-59. Use `readonly record struct` when strong-typing a generic type.
+17. Prefix private member variables with `_`, then use camelCase for the rest of the name, such as `_logger`.
+18. For UI component fields, put the component type first, then the role, such as `_buttonBack`, `_textTitle`, `_imagePortrait`, or `_sliderVolume`.
+19. Name methods with return values after the value they return.
+20. Prefer descriptive variable names. Use very short names only for trivial loop indices.
+21. Capitalize acronyms fully only when no normal word follows them; otherwise use normal PascalCase acronym casing.
+22. Prefer properties over getter and setter methods.
+23. Declare local variables near their first use.
+24. Specify floating-point precision explicitly unless `double` is intended.
+25. Always include a `default` case in `switch` statements.
+26. If a `switch` `default` should be unreachable, fail loudly with `Debug.Fail()`.
+27. Use `Debug.Assert()` for assumptions made while writing code.
+28. End recursive method names with `Recursive`.
+29. Order class contents as member variables, properties, constructors, then methods; order methods from public to private.
+30. Group related member variables and methods together.
+31. Avoid overloads when parameter types are too general; use explicit names instead.
+32. Keep each class in its own file unless grouping small related classes is clearer.
+33. Match the source filename to the class name, including casing.
+34. For partial classes, name each file with the class name plus a dot and subsection name.
+35. Use assertions for unrecoverable assumptions.
+36. End bitflag enum names with `Flags`.
+37. Prefer overloading over default parameters.
+38. If default parameters are used, limit them to natural immutable values such as `null`, `false`, or `0`.
+39. Do not shadow variables.
+40. Prefer generic containers from `System.Collections.Generic`; arrays are fine when they are the natural choice.
+41. Prefer explicit types over `var` unless the type is unimportant, such as anonymous types or some `IEnumerable` cases.
+42. Use static classes instead of singleton patterns.
+43. Use `async Task` instead of `async void`, except for event handlers.
+44. Do not add an `Async` suffix to async method names.
+45. Validate external data at the boundary, then assume internal data is valid.
+46. Do not throw exceptions from non-boundary methods; handle exceptions at boundaries.
+47. Exception throwing is allowed in `switch` defaults used to catch missing enum handling; do not catch those exceptions.
+48. Prefer not to allow `null` parameters, especially in public methods.
+49. If a parameter can be `null`, suffix the name with `OrNull`.
+50. Prefer not to return `null`, especially from public methods, unless it avoids throwing.
+51. If a method can return `null`, suffix the method name with `OrNull`.
+52. Use inline lambdas only for simple single statements.
+53. Avoid object initializers unless they are used with `required` and init-only setters.
+54. Declare `out` variables on a separate line before the call.
+55. Do not use the null-coalescing operator.
+56. Do not use `using` declarations; use `using` statements.
+57. Specify the type after `new`, except for anonymous types inside functions.
+58. Use `private init` setters wherever possible.
+59. Use file-scoped namespace declarations.
+60. Use `readonly record struct` when strong-typing a generic type.
 
 ## II. Code Formatting
 

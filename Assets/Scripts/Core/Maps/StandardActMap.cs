@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using STSLite.Core.Models;
 using STSLite.Core.Random;
 using STSLite.Core.Runs;
@@ -125,38 +125,38 @@ namespace STSLite.Core.Maps
         {
             ForEachInRow(Grid, BossMapPoint.Coord.Row - 1, delegate (MapPoint p)
             {
-                p.PointType = EMapPointType.Rest;
+                p.PointType = MapPointType.Rest;
                 p.CanBeModified = false;
             });
             ForEachInRow(Grid, 1, delegate (MapPoint p)
             {
-                p.PointType = EMapPointType.NormalMonster;
+                p.PointType = MapPointType.NormalMonster;
                 p.CanBeModified = false;
             });
 
             // Register point types to be assigned in a queue
-            Queue<EMapPointType> pointTypesToBeAssigned = new Queue<EMapPointType>();
+            Queue<MapPointType> pointTypesToBeAssigned = new Queue<MapPointType>();
             for (int num = 0; num < _pointTypeCounts.NumOfRests; num++)
             {
-                pointTypesToBeAssigned.Enqueue(EMapPointType.Rest);
+                pointTypesToBeAssigned.Enqueue(MapPointType.Rest);
             }
             for (int num2 = 0; num2 < _pointTypeCounts.NumOfShops; num2++)
             {
-                pointTypesToBeAssigned.Enqueue(EMapPointType.Shop);
+                pointTypesToBeAssigned.Enqueue(MapPointType.Shop);
             }
             for (int num3 = 0; num3 < _pointTypeCounts.NumOfElites; num3++)
             {
-                pointTypesToBeAssigned.Enqueue(EMapPointType.EliteMonster);
+                pointTypesToBeAssigned.Enqueue(MapPointType.EliteMonster);
             }
             for (int num4 = 0; num4 < _pointTypeCounts.NumOfUnknowns; num4++)
             {
-                pointTypesToBeAssigned.Enqueue(EMapPointType.Unknown);
+                pointTypesToBeAssigned.Enqueue(MapPointType.Unknown);
             }
 
             // Assign remaining types to random points
             {
                 List<MapPoint> unassignedMapPoints = (from p in GetAllMapPoints()
-                                                      where p.PointType == EMapPointType.Unassigned
+                                                      where p.PointType == MapPointType.Unassigned
                                                       select p).ToList();
                 _rng.Shuffle(unassignedMapPoints);
 
@@ -172,24 +172,24 @@ namespace STSLite.Core.Maps
 
             foreach (MapPoint mapPoint in GetAllMapPoints())
             {
-                if (mapPoint.PointType == EMapPointType.Unassigned)
+                if (mapPoint.PointType == MapPointType.Unassigned)
                 {
-                    mapPoint.PointType = EMapPointType.NormalMonster;
+                    mapPoint.PointType = MapPointType.NormalMonster;
                 }
             }
 
-            BossMapPoint.PointType = EMapPointType.BossMonster;
-            StartingMapPoint.PointType = EMapPointType.Ancient;
+            BossMapPoint.PointType = MapPointType.BossMonster;
+            StartingMapPoint.PointType = MapPointType.Ancient;
         }
 
         private void PruneAndRepair()
         {
             for (int row = 0; row < GetRowCount() - 1; row++)
             {
-                bool bRepaired;
+                bool repaired;
                 do
                 {
-                    bRepaired = false;
+                    repaired = false;
                     List<(MapPoint Parent, MapPoint Child)> edges = GetEdgesBetweenRows(row, row + 1);
 
                     for (int i = 0; i < edges.Count; i++)
@@ -215,16 +215,16 @@ namespace STSLite.Core.Maps
                             parentB.RemoveChild(childB);
                             parentA.AddChild(childB);
                             parentB.AddChild(childA);
-                            bRepaired = true;
+                            repaired = true;
                             break;
                         }
 
-                        if (bRepaired)
+                        if (repaired)
                         {
                             break;
                         }
                     }
-                } while (bRepaired);
+                } while (repaired);
             }
         }
 
@@ -266,17 +266,17 @@ namespace STSLite.Core.Maps
                     continue;
                 }
 
-                bool bHasCluster = false;
+                bool hasCluster = false;
                 for (int i = 1; i < points.Count; i++)
                 {
                     if (points[i].Coord.Column - points[i - 1].Coord.Column <= 1)
                     {
-                        bHasCluster = true;
+                        hasCluster = true;
                         break;
                     }
                 }
 
-                if (bHasCluster == false)
+                if (hasCluster == false)
                 {
                     continue;
                 }

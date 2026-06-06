@@ -11,6 +11,7 @@ namespace STSLite.Core.Models
         public string Entry;
     }
 
+    [Serializable]
     public abstract class AbstractDefinition
     {
     }
@@ -136,6 +137,7 @@ namespace STSLite.Core.Models
         }
     }
 
+    [Serializable]
     public class CharacterDefinition : AbstractDefinition
     {
         public string Id { get; set; }
@@ -147,6 +149,7 @@ namespace STSLite.Core.Models
     }
 
 
+    [Serializable]
     public class ModifierDefinition : AbstractDefinition
     {
 

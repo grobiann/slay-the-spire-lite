@@ -8,7 +8,7 @@ namespace STSLite.Core.Models
 {
     public class CombatRoom : Room
     {
-        public override ERoomType RoomType => throw new System.NotImplementedException();
+        public override RoomType RoomType => throw new System.NotImplementedException();
         public CombatState CombatState { get; }
 
         public CombatRoom(RunState runstate)
@@ -77,7 +77,7 @@ namespace STSLite.Core.Models
         {
         }
 
-        public void CreateCreature(MonsterDefinition monsterDefinition, ECombatSide side, string slot)
+        public void CreateCreature(MonsterDefinition monsterDefinition, CombatSide side, string slot)
         {
         }
 
@@ -101,7 +101,7 @@ namespace STSLite.Core.Models
     }
 
 
-    public enum ECombatSide
+    public enum CombatSide
     {
         None,
         Player,

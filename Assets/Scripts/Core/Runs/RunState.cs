@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace STSLite.Core.Runs
 {
-    public enum EPileType
+    public enum PileType
     {
         Deck,
         Hand,
@@ -16,10 +16,10 @@ namespace STSLite.Core.Runs
 
     public class CardPile
     {
-        public EPileType PileType { get; }
+        public PileType PileType { get; }
         public IReadOnlyList<Card> Cards { get; } = new List<Card>();
 
-        public CardPile(EPileType pileType)
+        public CardPile(PileType pileType)
         {
             PileType = pileType;
         }
@@ -48,17 +48,17 @@ namespace STSLite.Core.Runs
 
     public class UnknownMapPointOdds
     {
-        public ERoomType Roll(IEnumerable<ERoomType> blacklist, RunState runState)
+        public RoomType Roll(IEnumerable<RoomType> blacklist, RunState runState)
         {
-            HashSet<ERoomType> blockedRoomTypes = blacklist?.ToHashSet() ?? new HashSet<ERoomType>();
-            Dictionary<ERoomType, float> nonEventOdds = new Dictionary<ERoomType, float>
+            HashSet<RoomType> blockedRoomTypes = blacklist?.ToHashSet() ?? new HashSet<RoomType>();
+            Dictionary<RoomType, float> nonEventOdds = new Dictionary<RoomType, float>
             {
-                [ERoomType.NormalMonster] = 0.1f,
-                [ERoomType.Treasure] = 0.02f,
-                [ERoomType.Shop] = 0.03f,
+                [RoomType.NormalMonster] = 0.1f,
+                [RoomType.Treasure] = 0.02f,
+                [RoomType.Shop] = 0.03f,
             };
 
-            ERoomType selectedRoomType = ERoomType.Event;
+            RoomType selectedRoomType = RoomType.Event;
             if (blockedRoomTypes.Contains(selectedRoomType))
             {
                 selectedRoomType = nonEventOdds.Keys
@@ -66,7 +66,7 @@ namespace STSLite.Core.Runs
                     .OrderBy(roomType => roomType)
                     .FirstOrDefault();
 
-                if (selectedRoomType == ERoomType.Unassigned)
+                if (selectedRoomType == RoomType.Unassigned)
                 {
                     throw new System.InvalidOperationException("No available room type for unknown map point.");
                 }
@@ -74,7 +74,7 @@ namespace STSLite.Core.Runs
 
             float roll = runState.RngSet.UnknownMapPoint.NextFloat();
             float accumulatedOdds = 0f;
-            foreach (KeyValuePair<ERoomType, float> nonEventOdd in nonEventOdds)
+            foreach (KeyValuePair<RoomType, float> nonEventOdd in nonEventOdds)
             {
                 if (blockedRoomTypes.Contains(nonEventOdd.Key))
                 {
@@ -104,7 +104,7 @@ namespace STSLite.Core.Runs
         public IReadOnlyList<Player> Players { get; }
         public IReadOnlyList<ActDefinition> Acts { get; }
         public IReadOnlyList<ModifierDefinition> Modifiers { get; }
-        public EGameMode GameMode { get; }
+        public GameMode GameMode { get; }
 
         public RunRngSet RngSet { get; }
         public RunOddsSet OddsSet { get; }
@@ -118,7 +118,7 @@ namespace STSLite.Core.Runs
         private List<MapCoord> _visitedMapCoords = new List<MapCoord>();
 
 
-        public RunState(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts, IReadOnlyList<ModifierDefinition> modifiers, EGameMode gameMode, int currentActIndex, RunRngSet rng, RunOddsSet odds)
+        public RunState(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts, IReadOnlyList<ModifierDefinition> modifiers, GameMode gameMode, int currentActIndex, RunRngSet rng, RunOddsSet odds)
         {
             Players = players;
             Acts = acts;
@@ -129,7 +129,7 @@ namespace STSLite.Core.Runs
             OddsSet = odds;
         }
 
-        public static RunState CreateForNewRun(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts, IReadOnlyList<ModifierDefinition> modifiers, EGameMode gameMode, string seed)
+        public static RunState CreateForNewRun(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts, IReadOnlyList<ModifierDefinition> modifiers, GameMode gameMode, string seed)
         {
             RunRngSet rngSet = new RunRngSet(seed);
             RunOddsSet oddsSet = new RunOddsSet(rngSet.UnknownMapPoint);
@@ -141,7 +141,7 @@ namespace STSLite.Core.Runs
             return runState;
         }
 
-        public static RunState CreateShared(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts, IReadOnlyList<ModifierDefinition> modifiers, EGameMode gameMode, int currentActIndex, RunRngSet rng, RunOddsSet odds)
+        public static RunState CreateShared(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts, IReadOnlyList<ModifierDefinition> modifiers, GameMode gameMode, int currentActIndex, RunRngSet rng, RunOddsSet odds)
         {
             var runState = new RunState(players, acts, modifiers, gameMode, currentActIndex, rng, odds);
             foreach (Player player in players)

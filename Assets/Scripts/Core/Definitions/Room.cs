@@ -7,7 +7,7 @@ namespace STSLite.Core.Models
     public abstract class Room
     {
 
-        public abstract ERoomType RoomType { get; }
+        public abstract RoomType RoomType { get; }
         public int Id { get; private set; }
         //public RoomDefinition Definition { get; }
 
@@ -32,7 +32,7 @@ namespace STSLite.Core.Models
 
     public class TreasureRoom : Room
     {
-        public override ERoomType RoomType => throw new System.NotImplementedException();
+        public override RoomType RoomType => throw new System.NotImplementedException();
 
         public override UniTask EnterInternal(RunState runState)
         {
@@ -52,7 +52,7 @@ namespace STSLite.Core.Models
 
     public class MerchantRoom : Room
     {
-        public override ERoomType RoomType => throw new System.NotImplementedException();
+        public override RoomType RoomType => throw new System.NotImplementedException();
 
         public override UniTask EnterInternal(RunState runState)
         {
@@ -72,7 +72,7 @@ namespace STSLite.Core.Models
 
     public class EventRoom : Room
     {
-        public override ERoomType RoomType => throw new System.NotImplementedException();
+        public override RoomType RoomType => throw new System.NotImplementedException();
 
         public override UniTask EnterInternal(RunState runState)
         {
@@ -92,7 +92,7 @@ namespace STSLite.Core.Models
 
     public class RestRoom : Room
     {
-        public override ERoomType RoomType => throw new System.NotImplementedException();
+        public override RoomType RoomType => throw new System.NotImplementedException();
 
         public override UniTask EnterInternal(RunState runState)
         {

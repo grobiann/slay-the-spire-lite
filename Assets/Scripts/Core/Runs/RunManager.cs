@@ -113,7 +113,7 @@ namespace STSLite.Core.Runs
             await EnterMapPointInternal(coord.Row + 1, mapPoint.PointType);
         }
 
-        private async UniTask EnterMapPointInternal(int actFloor, EMapPointType pointType)
+        private async UniTask EnterMapPointInternal(int actFloor, MapPointType pointType)
         {
             // using(new NetLoadingHandle(NetService))
             {
@@ -141,15 +141,15 @@ namespace STSLite.Core.Runs
                 //    CombatReplayWriter.RecordInitialState(ToSave(null));
                 //}
                 //RoomType roomType;
-                //if (pointType == EMapPointType.Unknown && preFinishedRoom != null)
+                //if (pointType == MapPointType.Unknown && preFinishedRoom != null)
                 //{
                 //    roomType = RoomType.Monster;
                 //}
                 //else
                 //{
-                //HashSet<ERoomType> blacklist = BuildRoomTypeBlacklist(State.CurrentMapPointHistoryEntry, State.CurrentMapPoint?.Children ?? new HashSet<MapPoint>());
-                HashSet<ERoomType> blacklist = new HashSet<ERoomType>();
-                ERoomType roomType = RollRoomTypeFor(pointType, blacklist);
+                //HashSet<RoomType> blacklist = BuildRoomTypeBlacklist(State.CurrentMapPointHistoryEntry, State.CurrentMapPoint?.Children ?? new HashSet<MapPoint>());
+                HashSet<RoomType> blacklist = new HashSet<RoomType>();
+                RoomType roomType = RollRoomTypeFor(pointType, blacklist);
                 //}
                 Room room = CreateRoom(roomType, pointType);
                 //AbstractRoom abstractRoom = ((preFinishedRoom == null) ? CreateRoom(roomType, pointType) : preFinishedRoom);
@@ -178,35 +178,35 @@ namespace STSLite.Core.Runs
             }
         }
 
-        private ERoomType RollRoomTypeFor(EMapPointType pointType, HashSet<ERoomType> blacklist)
+        private RoomType RollRoomTypeFor(MapPointType pointType, HashSet<RoomType> blacklist)
         {
             return pointType switch
             {
-                EMapPointType.NormalMonster => ERoomType.NormalMonster,
-                EMapPointType.EliteMonster => ERoomType.EliteMonster,
-                EMapPointType.BossMonster => ERoomType.BossMonster,
-                EMapPointType.Shop => ERoomType.Shop,
-                EMapPointType.Rest => ERoomType.RestSite,
-                EMapPointType.Ancient => ERoomType.Event,
-                EMapPointType.Unknown => RunState.OddsSet.UnknownMapPoint.Roll(blacklist, RunState),
+                MapPointType.NormalMonster => RoomType.NormalMonster,
+                MapPointType.EliteMonster => RoomType.EliteMonster,
+                MapPointType.BossMonster => RoomType.BossMonster,
+                MapPointType.Shop => RoomType.Shop,
+                MapPointType.Rest => RoomType.RestSite,
+                MapPointType.Ancient => RoomType.Event,
+                MapPointType.Unknown => RunState.OddsSet.UnknownMapPoint.Roll(blacklist, RunState),
                 _ => throw new Exception($"Unsupported map point type {pointType}")
             };
         }
 
-        private Room CreateRoom(ERoomType roomType, EMapPointType pointType)
+        private Room CreateRoom(RoomType roomType, MapPointType pointType)
         {
             return new CombatRoom(RunState);
             switch (roomType)
             {
-                case ERoomType.NormalMonster:
-                case ERoomType.EliteMonster:
-                case ERoomType.BossMonster:
+                case RoomType.NormalMonster:
+                case RoomType.EliteMonster:
+                case RoomType.BossMonster:
                     //return new CombatRoom();
-                case ERoomType.Shop:
+                case RoomType.Shop:
                     return new MerchantRoom();
-                case ERoomType.RestSite:
+                case RoomType.RestSite:
                     return new RestRoom();
-                case ERoomType.Event:
+                case RoomType.Event:
                     return new EventRoom();
                 default:
                     throw new Exception($"Unsupported room type {roomType}");

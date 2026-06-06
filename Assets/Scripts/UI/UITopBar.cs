@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace STSLite.UI
 {
@@ -7,7 +8,10 @@ namespace STSLite.UI
     {
         public static UITopBar Instance { get; private set; }
 
-        [SerializeField] private TMP_Text _textHP;
+        [FormerlySerializedAs("_textHP")]
+        [SerializeField] private TMP_Text _textHp;
+
+        [FormerlySerializedAs("_textGold")]
         [SerializeField] private TMP_Text _textGold;
 
         // TODO: Positions

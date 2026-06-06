@@ -13,7 +13,7 @@ namespace STSLite.Core.Runs
         public CharacterDefinition Character { get; private set; }
         public CardPile RunCardPile { get; private set; }
         public RunState RunState { get; set; }
-        public CardPile Deck { get; } = new CardPile(EPileType.Deck);
+        public CardPile Deck { get; } = new CardPile(PileType.Deck);
         public ulong NetId { get; }
 
         public Player(CharacterDefinition character, ulong netId, int currentHp, int maxHp, int maxEnergy, int gold, int potionSlotCount, int orbSlotCount, 

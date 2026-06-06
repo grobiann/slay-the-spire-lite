@@ -9,7 +9,7 @@ namespace STSLite.UI
     [System.Serializable]
     public class MapPointIcon
     {
-        public EMapPointType mapPointType;
+        public MapPointType mapPointType;
         public Sprite Icon;
     }
 
@@ -23,7 +23,7 @@ namespace STSLite.UI
             _imageMapType.sprite = GetMapIcon(mapPoint.PointType);
         }
 
-        public Sprite? GetMapIcon(EMapPointType pointType)
+        public Sprite? GetMapIcon(MapPointType pointType)
         {
             foreach(MapPointIcon icon in _mapPointIcons)
             {

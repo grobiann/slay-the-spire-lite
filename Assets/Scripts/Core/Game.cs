@@ -81,7 +81,7 @@ namespace STSLite.Core
             await UIBlackScreen.Off();
         }
 
-        public async UniTask StartNewSinglePlayerRun(CharacterDefinition character, IReadOnlyList<ModifierDefinition> modifiers, string seed, EGameMode gameMode)
+        public async UniTask StartNewSinglePlayerRun(CharacterDefinition character, IReadOnlyList<ModifierDefinition> modifiers, string seed, GameMode gameMode)
         {
             RunState runState = RunState.CreateForNewRun(
                 players: new List<Player> { Player.CreateForNewRun(character, 1uL) },
@@ -101,7 +101,7 @@ namespace STSLite.Core
         }
     }
 
-    public enum EGameMode
+    public enum GameMode
     {
         None,
         Standard,

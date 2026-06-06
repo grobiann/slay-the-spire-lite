@@ -1,6 +1,6 @@
 namespace STSLite.Core.Maps
 {
-    public enum EMapPointType
+    public enum MapPointType
     {
         Unassigned,
         NormalMonster,
@@ -12,7 +12,7 @@ namespace STSLite.Core.Maps
         Unknown
     }
 
-    public enum ERoomType
+    public enum RoomType
     {
         Unassigned,
         NormalMonster,
