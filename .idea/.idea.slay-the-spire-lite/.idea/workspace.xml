@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8b86983e-7f7b-430e-aede-52bbc3d285c1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.slay-the-spire-lite/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Characters.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/SelectCharacter.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/SelectCharacter/UICharacterSelectScreenWindow.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/SelectCharacter/UICharacterSlot.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/SelectCharacter/UILobbyPlayer.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/SelectCharacter/UILobbyPlayer.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Multiplayer/Game/NetGameTypeExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Multiplayer/Game/NetGameTypeExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/ResourceManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/ResourceManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/SlotContainer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/SlotContainer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UILobbyPlayerContainer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UILobbyPlayerContainer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UILobbyPlayerSlot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UILobbyPlayerSlot.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/addons.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/addons/sentry.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/addons/sentry/bin.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/addons/sentry/bin/windows.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/addons/sentry/bin/windows/arm64.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/addons/sentry/bin/windows/x86_32.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/addons/sentry/bin/windows/x86_64.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Directory.Build.props" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Slay the Spire 2/.idea/.idea.sts2/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DefaultVolumeProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DefaultVolumeProfile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/badge.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_badge.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/badge.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_badge.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/battle.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_battle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/battle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_battle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/boss.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_boss.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/boss.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_boss.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/diamond.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_diamond.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/diamond.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_diamond.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/home.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_home.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/home.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_home.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/info-question.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_info-question.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/info-question.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_info-question.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/sword.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_sword.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/sword.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_sword.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/sword2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_sword2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Icons/sword2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/actnode_sword2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/UICharacterSelectScreenWindow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/UICharacterSelectScreenWindow.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/SelectCharacter/UICharacterSelectScreenWindow.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/UICharacterSlot.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/UICharacterSlot.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/SelectCharacter/UICharacterSlot.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Lobby.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Definitions/DefinitionDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Definitions/DefinitionDB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UICharacterSelectScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UICharacterSelectScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UICharacterSlotWidget.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UICharacterSlotWidget.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIMainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIMainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIRegistry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIRegistry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PlayMode/p2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PlayMode/p2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SkymonIconPackFree/skymon-icons-white/air.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/character1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SkymonIconPackFree/skymon-icons-white/air.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/character1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SkymonIconPackFree/skymon-icons-white/armor.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/character3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SkymonIconPackFree/skymon-icons-white/armor.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/character3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SkymonIconPackFree/skymon-icons-white/btn-round-check.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/btn-round-check.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SkymonIconPackFree/skymon-icons-white/btn-round-check.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Icons/btn-round-check.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SkymonIconPackFree/skymon-icons-white/bug.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/character2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SkymonIconPackFree/skymon-icons-white/bug.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Characters/character2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/MultiplayerManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/MultiplayerManager.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="179" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/DefaultVolumeProfile.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Multiplayer/Game/NetGameTypeExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Saves/SaveManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@360e370345b9/Runtime/CompilerServices/AsyncUniTaskMethodBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collections@aea9d3bd5e19/Unity.Collections.PerformanceTests/Unity.PerformanceTesting.Benchmark/BenchmarkAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/fa/a471c06a/List`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b7840b1dfe7b4a73b466889f96810c49212400/1a/cb523a7b/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b7840b1dfe7b4a73b466889f96810c49212400/ac/9e815101/LogType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8a522b806eac9bb894e6e4c5fe87f353457535e769447e79c6b396beecb5d0/System.Threading.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9384495d2a482ac7341d67ca84e16d267d16c62458a9d67a92b119199a9/System.Threading.Tasks.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.8122523963562354" />
+      <entry key="MS500" value="1.9592641193252645" />
+      <entry key="S2" value="1.989656656415207" />
+      <entry key="S5" value="1.9958497530946206" />
+      <entry key="S10" value="1.9979247309288404" />
+      <entry key="S30" value="2.112342314529441" />
+      <entry key="S60" value="3.7703766099868723" />
+      <entry key="M2" value="10.0186919819568" />
+      <entry key="M5" value="37.573449219271346" />
+      <entry key="M10" value="78.27491058453666" />
+      <entry key="M15" value="107.93205109018034" />
+      <entry key="M30" value="196.30352992473235" />
+      <entry key="H1" value="387.1624667747936" />
+      <entry key="H2" value="651.4500719212278" />
+      <entry key="H4" value="908.6587512561024" />
+      <entry key="D1" value="1895.5467897511126" />
+      <entry key="W1" value="2701.5570651289836" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="3.437283626991383E-77" />
+      <entry key="S2" value="1.0535327448182038E-19" />
+      <entry key="S5" value="3.7876376867167644E-8" />
+      <entry key="S10" value="2.73982968337461E-4" />
+      <entry key="S30" value="0.1033836881750693" />
+      <entry key="S60" value="0.4749074216677927" />
+      <entry key="M2" value="1.2551155177535263" />
+      <entry key="M5" value="5.1643410701418775" />
+      <entry key="M10" value="11.581489235420827" />
+      <entry key="M15" value="16.4943530835514" />
+      <entry key="M30" value="32.595339506469" />
+      <entry key="H1" value="66.27790851402331" />
+      <entry key="H2" value="108.2677159262449" />
+      <entry key="H4" value="144.9781184091747" />
+      <entry key="D1" value="259.70620602947963" />
+      <entry key="W1" value="349.88876277207726" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.8769308226414286" />
+      <entry key="MS500" value="1.46382257733245" />
+      <entry key="S2" value="1.831157245349668" />
+      <entry key="S5" value="1.929064932300599" />
+      <entry key="S10" value="1.9641557670295258" />
+      <entry key="S30" value="2.195926868058835" />
+      <entry key="S60" value="4.220342058257905" />
+      <entry key="M2" value="11.247508694339626" />
+      <entry key="M5" value="42.7040064202483" />
+      <entry key="M10" value="89.82047609094465" />
+      <entry key="M15" value="124.39274027017298" />
+      <entry key="M30" value="228.86647743422841" />
+      <entry key="H1" value="453.407510939091" />
+      <entry key="H2" value="759.6907742695138" />
+      <entry key="H4" value="1053.6187493869852" />
+      <entry key="D1" value="2155.2474911922673" />
+      <entry key="W1" value="3051.444757886467" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="3EnX8hE4NsQYfleSI0Rcl47AgBu" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Unity 에디터에 연결.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.AIAssistantPromptsLibrary&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Unity 에디터에 연결.Attach to Unity Editor">
+    <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Projects\slay-the-spire-lite -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Projects\slay-the-spire-lite" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Projects\slay-the-spire-lite -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Projects\slay-the-spire-lite" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Projects\slay-the-spire-lite -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Projects\slay-the-spire-lite" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unity 시작" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Projects\slay-the-spire-lite -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Projects\slay-the-spire-lite" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="32552">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="32552" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list>
+          <MonoRuntime />
+        </list>
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8b86983e-7f7b-430e-aede-52bbc3d285c1" name="Changes" comment="" />
+      <created>1780815151516</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1780815151516</updated>
+      <workItem from="1780815153203" duration="103000" />
+      <workItem from="1780815346908" duration="24415000" />
+      <workItem from="1781009698273" duration="2196000" />
+      <workItem from="1781176442824" duration="669000" />
+      <workItem from="1781178760203" duration="16000" />
+      <workItem from="1781178794077" duration="4929000" />
+      <workItem from="1781183858796" duration="163000" />
+      <workItem from="1781261822524" duration="23372000" />
+      <workItem from="1781356667274" duration="8406000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Core/Multiplayer/Game/Lobby/StartRunLobby.cs</url>
+          <line>75</line>
+          <properties documentPath="C:\Projects\slay-the-spire-lite\Assets\Scripts\Core\Multiplayer\Game\Lobby\StartRunLobby.cs" containingFunctionPresentation="메서드 'InitializeFromMessage'">
+            <startOffsets>
+              <option value="3723" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3739" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Core/Multiplayer/Game/Lobby/StartRunLobby.cs</url>
+          <line>292</line>
+          <properties documentPath="C:\Projects\slay-the-spire-lite\Assets\Scripts\Core\Multiplayer\Game\Lobby\StartRunLobby.cs" containingFunctionPresentation="메서드 'HandleClientLobbyJoinResponseMessage'">
+            <startOffsets>
+              <option value="11477" />
+            </startOffsets>
+            <endOffsets>
+              <option value="11508" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

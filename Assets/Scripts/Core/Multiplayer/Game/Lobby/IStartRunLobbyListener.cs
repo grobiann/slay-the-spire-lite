@@ -14,7 +14,10 @@ namespace STSLite.Core.Multiplayer.Game.Lobby
         void MaxAscensionChanged();
         void SeedChanged();
         void ModifiersChanged();
-        void BeginRun(IReadOnlyList<Player> players, IReadOnlyList<ModifierDefinition> modifiers, string seed, GameMode gameMode);
+
+        void BeginRun(IReadOnlyList<Player> players, IReadOnlyList<ModifierDefinition> modifiers, string seed,
+            GameMode gameMode);
+
         void LocalPlayerDisconnected(NetErrorInfo info);
     }
 }

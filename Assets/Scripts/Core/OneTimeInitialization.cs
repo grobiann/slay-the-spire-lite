@@ -14,7 +14,6 @@ namespace STSLite.Core
 
     public class PreloadManager
     {
-
         public static async UniTask LoadRunAssets()
         {
         }

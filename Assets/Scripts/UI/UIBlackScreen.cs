@@ -45,6 +45,7 @@ namespace STSLite.UI
                 _canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, t);
                 await UniTask.Yield();
             }
+
             _canvasGroup.alpha = endAlpha;
             if (!onOff)
             {

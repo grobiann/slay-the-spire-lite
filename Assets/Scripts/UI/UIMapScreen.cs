@@ -29,7 +29,7 @@ namespace STSLite.UI
             {
                 GenerateMapPoint(point);
 
-                foreach(MapPoint child in point.Children)
+                foreach (MapPoint child in point.Children)
                 {
                     GenerateMapPointConnection(point, child);
                 }
@@ -53,7 +53,8 @@ namespace STSLite.UI
             Vector2 direction = childPosition - parentPosition;
             uiMapPointConnection.transform.localPosition = parentPosition + direction / 2f;
             uiMapPointConnection.transform.rotation = Quaternion.FromToRotation(Vector3.right, direction);
-            uiMapPointConnection.transform.localScale = new Vector3(direction.magnitude, uiMapPointConnection.transform.localScale.y, uiMapPointConnection.transform.localScale.z);
+            uiMapPointConnection.transform.localScale = new Vector3(direction.magnitude,
+                uiMapPointConnection.transform.localScale.y, uiMapPointConnection.transform.localScale.z);
             uiMapPointConnection.transform.SetAsFirstSibling();
             _uiMapPointConnections.Add(uiMapPointConnection);
         }
@@ -66,7 +67,9 @@ namespace STSLite.UI
                 areaRect.min + padding,
                 areaRect.size - padding * 2f);
 
-            float xRate = _map.GetColumnCount() <= 1 ? 0.5f : mapPoint.Coord.Column / (float)(_map.GetColumnCount() - 1);
+            float xRate = _map.GetColumnCount() <= 1
+                ? 0.5f
+                : mapPoint.Coord.Column / (float)(_map.GetColumnCount() - 1);
             float yRate = _map.GetRowCount() <= 1 ? 0.5f : mapPoint.Coord.Row / (float)(_map.GetRowCount() - 1);
             float positionX = targetRect.xMin + xRate * targetRect.width;
             float positionY = targetRect.yMin + yRate * targetRect.height;
@@ -75,7 +78,6 @@ namespace STSLite.UI
 
         public void ClearDrawings()
         {
-
         }
     }
 }

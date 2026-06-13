@@ -41,7 +41,8 @@ namespace STSLite.Core.Multiplayer
                 _peer = new ENetPacketPeer(tcpClient);
                 _cancelSource = new CancellationTokenSource();
                 _isConnected = true;
-                _messageBus.RegisterMessageHandler<ClientLobbyJoinResponseMessage>(HandleClientLobbyJoinResponseMessage);
+                _messageBus.RegisterMessageHandler<ClientLobbyJoinResponseMessage>(
+                    HandleClientLobbyJoinResponseMessage);
                 _ = ReceiveLoop(_cancelSource.Token);
                 return null;
             }

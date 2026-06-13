@@ -9,12 +9,10 @@ namespace STSLite.Core.Saves
 
     public interface ISaveStore
     {
-
     }
 
     public class SaveManager
     {
-        
         public static SaveManager Instance
         {
             get
@@ -23,9 +21,11 @@ namespace STSLite.Core.Saves
                 {
                     _instance = ConstructDefault();
                 }
+
                 return _instance;
             }
         }
+
         private static SaveManager _instance;
 
         public SettingsSaveData SettingsSaveData { get; }
@@ -44,6 +44,7 @@ namespace STSLite.Core.Saves
         public void TryFirstTimeCloudSync()
         {
         }
+
         public void SyncCloudToLocal()
         {
         }
@@ -59,6 +60,5 @@ namespace STSLite.Core.Saves
 
     public class AccountScopeUserDataMigrator
     {
-
     }
 }

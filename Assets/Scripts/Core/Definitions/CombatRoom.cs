@@ -65,7 +65,6 @@ namespace STSLite.Core.Models
 
         public void AddCard(Card card)
         {
-
         }
 
         public bool ContainsCard(Card card)
@@ -110,6 +109,5 @@ namespace STSLite.Core.Models
 
     public class Creature
     {
-
     }
 }

@@ -19,14 +19,17 @@ namespace STSLite.UI
                     {
                         _instance = Resources.Load<UIManager>("Prefabs/UI/UIManager");
                     }
+
                     if (_instance == null)
                     {
                         throw new InvalidOperationException("UIManager instance not found.");
                     }
                 }
+
                 return _instance;
             }
         }
+
         private static UIManager _instance;
 
         private readonly Dictionary<Type, UIBase> _openedUis = new Dictionary<Type, UIBase>();
@@ -103,7 +106,8 @@ namespace STSLite.UI
             GameObject prefab = LoadPrefab(uiInfo.PrefabPath);
             if (prefab == null)
             {
-                throw new InvalidOperationException($"UI prefab not found. Type: {uiType.Name}, Path: {uiInfo.PrefabPath}");
+                throw new InvalidOperationException(
+                    $"UI prefab not found. Type: {uiType.Name}, Path: {uiInfo.PrefabPath}");
             }
 
             GameObject instance = Instantiate(prefab, transform);

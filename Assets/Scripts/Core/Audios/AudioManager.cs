@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace STSLite.Core
 {
-
     public class AudioManager : MonoBehaviour
     {
         public static AudioManager Instance
@@ -17,9 +16,11 @@ namespace STSLite.Core
                         _instance = CoreUtils.CreateSingletonObject<AudioManager>("AudioManager");
                     }
                 }
+
                 return _instance;
             }
         }
+
         private static AudioManager _instance;
 
         public void SetMasterVolume(float volume)
@@ -33,8 +34,5 @@ namespace STSLite.Core
         public void SetSFXVolume(float volume)
         {
         }
-
     }
-
-
 }

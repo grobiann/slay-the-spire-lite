@@ -31,7 +31,8 @@ namespace STSLite.Core.Multiplayer.Game.Lobby
         public event Action<LobbyPlayer> PlayerDisconnected;
         public event Action<IReadOnlyList<Player>, IReadOnlyList<ModifierDefinition>, string, GameMode> BeginRun;
 
-        public StartRunLobby(GameMode gameMode, INetGameService netService, IStartRunLobbyListener lobbyListener, int maxPlayers)
+        public StartRunLobby(GameMode gameMode, INetGameService netService, IStartRunLobbyListener lobbyListener,
+            int maxPlayers)
         {
             GameMode = gameMode;
             NetService = netService;
@@ -45,7 +46,8 @@ namespace STSLite.Core.Multiplayer.Game.Lobby
             NetService.RegisterMessageHandler<ClientLobbyJoinResponseMessage>(HandleClientLobbyJoinResponseMessage);
             NetService.RegisterMessageHandler<PlayerJoinedMessage>(HandlePlayerJoinedMessage);
             NetService.RegisterMessageHandler<PlayerLeftMessage>(HandlePlayerLeftMessage);
-            NetService.RegisterMessageHandler<LobbyPlayerChangedCharacterMessage>(HandleLobbyPlayerChangedCharacterMessage);
+            NetService.RegisterMessageHandler<LobbyPlayerChangedCharacterMessage>(
+                HandleLobbyPlayerChangedCharacterMessage);
             NetService.RegisterMessageHandler<LobbyAscensionChangedMessage>(HandleAscensionChangedMessage);
             NetService.RegisterMessageHandler<LobbySeedChangedMessage>(HandleSeedChangedMessage);
             NetService.RegisterMessageHandler<LobbyModifiersChangedMessage>(HandleModifiersChangedMessage);
@@ -94,7 +96,8 @@ namespace STSLite.Core.Multiplayer.Game.Lobby
             NetService.UnregisterMessageHandler<ClientLobbyJoinResponseMessage>(HandleClientLobbyJoinResponseMessage);
             NetService.UnregisterMessageHandler<PlayerJoinedMessage>(HandlePlayerJoinedMessage);
             NetService.UnregisterMessageHandler<PlayerLeftMessage>(HandlePlayerLeftMessage);
-            NetService.UnregisterMessageHandler<LobbyPlayerChangedCharacterMessage>(HandleLobbyPlayerChangedCharacterMessage);
+            NetService.UnregisterMessageHandler<LobbyPlayerChangedCharacterMessage>(
+                HandleLobbyPlayerChangedCharacterMessage);
             NetService.UnregisterMessageHandler<LobbyAscensionChangedMessage>(HandleAscensionChangedMessage);
             NetService.UnregisterMessageHandler<LobbySeedChangedMessage>(HandleSeedChangedMessage);
             NetService.UnregisterMessageHandler<LobbyModifiersChangedMessage>(HandleModifiersChangedMessage);
@@ -309,7 +312,8 @@ namespace STSLite.Core.Multiplayer.Game.Lobby
             RemovePlayer(message.playerId);
         }
 
-        private void HandleLobbyPlayerChangedCharacterMessage(LobbyPlayerChangedCharacterMessage message, ulong senderId)
+        private void HandleLobbyPlayerChangedCharacterMessage(LobbyPlayerChangedCharacterMessage message,
+            ulong senderId)
         {
             ChangeCharacter(senderId, message.character, false);
         }
@@ -544,7 +548,8 @@ namespace STSLite.Core.Multiplayer.Game.Lobby
 
         private CharacterDefinition GetCharacterOrDefault(string characterId)
         {
-            CharacterDefinition character = DefinitionDB.CharacterDefinitions.FirstOrDefault(definition => definition.Id == characterId);
+            CharacterDefinition character =
+                DefinitionDB.CharacterDefinitions.FirstOrDefault(definition => definition.Id == characterId);
             if (character != null)
             {
                 return character;
@@ -573,5 +578,4 @@ namespace STSLite.Core.Multiplayer.Game.Lobby
         public bool isReady;
         public int maxMultiplayerAscensionUnlocked;
     }
-
 }

@@ -16,16 +16,9 @@ namespace STSLite.UI
     {
         public static UIMainMenu Instance { get; private set; }
 
-        [FormerlySerializedAs("_btnPlay")]
         [SerializeField] private Button _buttonPlay;
-
-        [FormerlySerializedAs("_btnExit")]
         [SerializeField] private Button _buttonExit;
-
-        [FormerlySerializedAs("_btnHost")]
         [SerializeField] private Button _buttonHost;
-
-        [FormerlySerializedAs("_btnClient")]
         [SerializeField] private Button _buttonClient;
 
         private const int MultiplayerTestHostPort = 33771;
@@ -74,7 +67,7 @@ namespace STSLite.UI
                 netService.StartENetHost(MultiplayerTestHostPort, 4);
             }
 
-            if(!netErrorInfo.HasValue)
+            if (!netErrorInfo.HasValue)
             {
                 var characterSelectionUI = UIManager.Instance.Show<UICharacterSelectScreen>();
                 characterSelectionUI.InitializeMultiplayerAsHost(netService, 4);

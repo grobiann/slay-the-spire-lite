@@ -13,7 +13,9 @@ namespace STSLite.Core.Multiplayer
     public class NetHostGameService : INetGameService, INetHostHandler
     {
         private NetHost? _netHost;
+
         private readonly NetMessageBus _messageBus = new NetMessageBus();
+
         //private readonly NetQualityTracker _qualityTracker;
         private readonly List<NetClientData> _connectedPeers = new List<NetClientData>();
 
@@ -146,6 +148,5 @@ namespace STSLite.Core.Multiplayer
         {
             Disconnected?.Invoke(reason);
         }
-
     }
 }

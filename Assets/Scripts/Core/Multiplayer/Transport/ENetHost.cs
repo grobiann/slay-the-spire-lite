@@ -85,7 +85,8 @@ namespace STSLite.Core.Multiplayer.Transport.ENet
         {
         }
 
-        public override void SendMessageToClient(ulong peerId, string json, int length, NetTransferMode mode, int channel = 0)
+        public override void SendMessageToClient(ulong peerId, string json, int length, NetTransferMode mode,
+            int channel = 0)
         {
             ClientConnection? connection = GetConnectionById(peerId);
             if (!connection.HasValue)

@@ -6,7 +6,6 @@ namespace STSLite.Core.Models
 {
     public abstract class Room
     {
-
         public abstract RoomType RoomType { get; }
         public int Id { get; private set; }
         //public RoomDefinition Definition { get; }
@@ -27,7 +26,6 @@ namespace STSLite.Core.Models
         public abstract UniTask EnterInternal(RunState runState);
         public abstract UniTask Exit();
         public abstract UniTask Resume();
-
     }
 
     public class TreasureRoom : Room

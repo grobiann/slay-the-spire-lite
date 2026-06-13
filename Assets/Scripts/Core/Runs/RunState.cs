@@ -40,6 +40,7 @@ namespace STSLite.Core.Runs
     public class RunOddsSet
     {
         public UnknownMapPointOdds UnknownMapPoint { get; private set; }
+
         public RunOddsSet(Rng rng)
         {
             UnknownMapPoint = new UnknownMapPointOdds();
@@ -118,7 +119,9 @@ namespace STSLite.Core.Runs
         private List<MapCoord> _visitedMapCoords = new List<MapCoord>();
 
 
-        public RunState(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts, IReadOnlyList<ModifierDefinition> modifiers, GameMode gameMode, int currentActIndex, RunRngSet rng, RunOddsSet odds)
+        public RunState(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts,
+            IReadOnlyList<ModifierDefinition> modifiers, GameMode gameMode, int currentActIndex, RunRngSet rng,
+            RunOddsSet odds)
         {
             Players = players;
             Acts = acts;
@@ -129,7 +132,8 @@ namespace STSLite.Core.Runs
             OddsSet = odds;
         }
 
-        public static RunState CreateForNewRun(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts, IReadOnlyList<ModifierDefinition> modifiers, GameMode gameMode, string seed)
+        public static RunState CreateForNewRun(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts,
+            IReadOnlyList<ModifierDefinition> modifiers, GameMode gameMode, string seed)
         {
             RunRngSet rngSet = new RunRngSet(seed);
             RunOddsSet oddsSet = new RunOddsSet(rngSet.UnknownMapPoint);
@@ -138,10 +142,13 @@ namespace STSLite.Core.Runs
             {
                 player.InitializeSeed(seed);
             }
+
             return runState;
         }
 
-        public static RunState CreateShared(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts, IReadOnlyList<ModifierDefinition> modifiers, GameMode gameMode, int currentActIndex, RunRngSet rng, RunOddsSet odds)
+        public static RunState CreateShared(IReadOnlyList<Player> players, IReadOnlyList<ActDefinition> acts,
+            IReadOnlyList<ModifierDefinition> modifiers, GameMode gameMode, int currentActIndex, RunRngSet rng,
+            RunOddsSet odds)
         {
             var runState = new RunState(players, acts, modifiers, gameMode, currentActIndex, rng, odds);
             foreach (Player player in players)
@@ -188,6 +195,7 @@ namespace STSLite.Core.Runs
             {
                 return false;
             }
+
             _visitedMapCoords.Add(coord);
             return true;
         }
@@ -208,6 +216,7 @@ namespace STSLite.Core.Runs
             {
                 throw new System.InvalidOperationException("Cannot pop room when there is no current room.");
             }
+
             Room result = _currentRooms.Last();
             _currentRooms.RemoveAt(_currentRooms.Count - 1);
             return result;

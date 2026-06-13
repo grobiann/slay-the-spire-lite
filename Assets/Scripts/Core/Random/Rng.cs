@@ -57,6 +57,7 @@ namespace STSLite.Core.Random
             {
                 throw new System.ArgumentException("minInclusive must be less than maxExclusive.");
             }
+
             Counter++;
             return _random.Next(minInclusive, maxExclusive);
         }
@@ -72,6 +73,7 @@ namespace STSLite.Core.Random
             {
                 throw new System.ArgumentException("min must be less than max.");
             }
+
             Counter++;
             return (float)_random.NextDouble() * (max - min) + min;
         }
@@ -88,6 +90,7 @@ namespace STSLite.Core.Random
             {
                 throw new System.ArgumentException("min must be less than max.");
             }
+
             Counter++;
             return _random.NextDouble() * (max - min) + min;
         }
@@ -103,6 +106,7 @@ namespace STSLite.Core.Random
             {
                 throw new System.ArgumentException("Standard deviation must be positive.");
             }
+
             if (min > max)
             {
                 throw new System.ArgumentException("min must be less than max.");
@@ -119,6 +123,7 @@ namespace STSLite.Core.Random
             {
                 return default(T);
             }
+
             int index = NextInt(num);
             return items.ElementAt(index);
         }
@@ -128,7 +133,8 @@ namespace STSLite.Core.Random
             return WeightedNextItem(NextFloat(), items, weightFunc);
         }
 
-        public static T WeightedNextItem<T>(float randInput, IEnumerable<T> items, Func<T?, float> weightFunc, T fallback = default(T))
+        public static T WeightedNextItem<T>(float randInput, IEnumerable<T> items, Func<T?, float> weightFunc,
+            T fallback = default(T))
         {
             float totalWeight = items.Sum(weightFunc);
             float randomValue = randInput * totalWeight;
@@ -140,6 +146,7 @@ namespace STSLite.Core.Random
                     return item;
                 }
             }
+
             return fallback;
         }
 

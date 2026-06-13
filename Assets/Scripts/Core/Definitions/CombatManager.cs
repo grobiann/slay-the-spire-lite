@@ -10,14 +10,17 @@ namespace STSLite.Core.Models
                 {
                     _instance = new CombatManager();
                 }
+
                 return _instance;
             }
         }
+
         private static CombatManager _instance;
 
         public void StartCombat(CombatState combatState)
         {
         }
+
         public void Reset()
         {
         }

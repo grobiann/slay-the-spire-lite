@@ -16,7 +16,8 @@ namespace STSLite.Core.Runs
         public CardPile Deck { get; } = new CardPile(PileType.Deck);
         public ulong NetId { get; }
 
-        public Player(CharacterDefinition character, ulong netId, int currentHp, int maxHp, int maxEnergy, int gold, int potionSlotCount, int orbSlotCount, 
+        public Player(CharacterDefinition character, ulong netId, int currentHp, int maxHp, int maxEnergy, int gold,
+            int potionSlotCount, int orbSlotCount,
             List<AbstractDefinitionId> discoveredCards = null,
             List<AbstractDefinitionId> discoveredEnemies = null,
             List<AbstractDefinitionId> discoveredEpochs = null,
@@ -30,15 +31,15 @@ namespace STSLite.Core.Runs
         public static Player? CreateForNewRun(CharacterDefinition character, ulong netId)
         {
             Player player = new Player(
-                    character: character,
-                    netId: netId,
-                    currentHp: character.BaseHealth,
-                    maxHp: character.BaseHealth,
-                    maxEnergy: 3,
-                    gold: 99,
-                    potionSlotCount: 3,
-                    orbSlotCount: 0
-                );
+                character: character,
+                netId: netId,
+                currentHp: character.BaseHealth,
+                maxHp: character.BaseHealth,
+                maxEnergy: 3,
+                gold: 99,
+                potionSlotCount: 3,
+                orbSlotCount: 0
+            );
             return player;
         }
 

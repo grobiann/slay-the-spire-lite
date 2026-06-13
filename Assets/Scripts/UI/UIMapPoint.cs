@@ -25,13 +25,14 @@ namespace STSLite.UI
 
         public Sprite? GetMapIcon(MapPointType pointType)
         {
-            foreach(MapPointIcon icon in _mapPointIcons)
+            foreach (MapPointIcon icon in _mapPointIcons)
             {
-                if(icon.mapPointType == pointType)
+                if (icon.mapPointType == pointType)
                 {
                     return icon.Icon;
-                }    
+                }
             }
+
             return null;
         }
     }

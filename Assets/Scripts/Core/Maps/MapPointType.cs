@@ -8,7 +8,7 @@ namespace STSLite.Core.Maps
         BossMonster,
         Shop,
         Rest,
-        Ancient,  // Starting point
+        Ancient, // Starting point
         Unknown
     }
 

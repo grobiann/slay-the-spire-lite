@@ -25,10 +25,31 @@ namespace STSLite.Core.Models
                 Id = "The Ironclad",
                 Name = "The Ironclad",
                 Description = "A mighty warrior with high health and strong attacks.",
+                IconPath = "Characters/character1",
                 BaseHealth = 80,
                 BaseAttack = 10,
                 BaseDefense = 5
             },
+            new CharacterDefinition()
+            {
+                Id = "Character2",
+                Name = "Character 2",
+                Description = "Character2 Desc",
+                IconPath = "Characters/character2",
+                BaseHealth = 80,
+                BaseAttack = 10,
+                BaseDefense = 5
+            },
+            new CharacterDefinition()
+            {
+                Id = "Character3",
+                Name = "Character 3",
+                Description = "Character3 Desc",
+                IconPath = "Characters/character3",
+                BaseHealth = 80,
+                BaseAttack = 10,
+                BaseDefense = 5
+            }
         };
 
         public static IReadOnlyList<ModifierDefinition> RunModifierDefinitions = new List<ModifierDefinition>()
@@ -83,7 +104,8 @@ namespace STSLite.Core.Models
             // Add RoomDefinition instances here.
         };
 
-        private static Dictionary<AbstractDefinitionId, AbstractDefinition> _definitionById = new Dictionary<AbstractDefinitionId, AbstractDefinition>();
+        private static Dictionary<AbstractDefinitionId, AbstractDefinition> _definitionById =
+            new Dictionary<AbstractDefinitionId, AbstractDefinition>();
 
         public static void Init()
         {
@@ -123,7 +145,7 @@ namespace STSLite.Core.Models
         public static string GetCategory(Type type)
         {
             Type categoryType = type;
-            while(categoryType.BaseType != typeof(AbstractDefinition))
+            while (categoryType.BaseType != typeof(AbstractDefinition))
             {
                 categoryType = categoryType.BaseType;
             }
@@ -143,6 +165,7 @@ namespace STSLite.Core.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string IconPath { get; set; }
         public int BaseHealth { get; set; }
         public int BaseAttack { get; set; }
         public int BaseDefense { get; set; }
@@ -152,47 +175,38 @@ namespace STSLite.Core.Models
     [Serializable]
     public class ModifierDefinition : AbstractDefinition
     {
-
     }
 
     public class PotionDefinition : AbstractDefinition
     {
-
     }
 
     public class OrbDefinition : AbstractDefinition
     {
-
     }
 
     public class RelicDefinition : AbstractDefinition
     {
-
     }
 
     public class MonsterDefinition : AbstractDefinition
     {
-
     }
 
     public class EncounterDefinition : AbstractDefinition
     {
-
     }
 
     public class EventDefinition : AbstractDefinition
     {
-
     }
 
     public class CardDefinition : AbstractDefinition
     {
-        
     }
 
     public class RoomDefinition : AbstractDefinition
     {
-
     }
 
     public class MapRoomDefinition : RoomDefinition

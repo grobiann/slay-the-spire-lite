@@ -16,12 +16,14 @@ namespace STSLite.Core.Maps
             Column = column;
             Row = row;
         }
+
         public override bool Equals(object obj)
         {
             if (obj is MapCoord other)
             {
                 return Equals(other);
             }
+
             return false;
         }
 
@@ -44,6 +46,5 @@ namespace STSLite.Core.Maps
         {
             return $"MapCoord ({Column}, {Row})";
         }
-
     }
 }

@@ -35,7 +35,8 @@ namespace STSLite.Core.Multiplayer.Game.Lobby
         {
         }
 
-        public void BeginRun(IReadOnlyList<Player> players, IReadOnlyList<ModifierDefinition> modifiers, string seed, GameMode gameMode)
+        public void BeginRun(IReadOnlyList<Player> players, IReadOnlyList<ModifierDefinition> modifiers, string seed,
+            GameMode gameMode)
         {
         }
 

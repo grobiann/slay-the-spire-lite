@@ -68,14 +68,8 @@ namespace STSLite.Core.Maps
             }
 
             // 보스맵 바로 전의 행에 있는 맵 포인트들을 모두 시작점으로 해서 경로를 생성한다.
-            ForEachInRow(Grid, BossMapPoint.Coord.Row - 1, mapPoint =>
-            {
-                mapPoint.AddChild(BossMapPoint);
-            });
-            ForEachInRow(Grid, 1, mapPoint =>
-            {
-                StartingMapPoint.AddChild(mapPoint);
-            });
+            ForEachInRow(Grid, BossMapPoint.Coord.Row - 1, mapPoint => { mapPoint.AddChild(BossMapPoint); });
+            ForEachInRow(Grid, 1, mapPoint => { StartingMapPoint.AddChild(mapPoint); });
         }
 
         private static void ForEachInRow(MapPoint?[,] grid, int row, System.Action<MapPoint> processor)
@@ -99,6 +93,7 @@ namespace STSLite.Core.Maps
                 mapPoint = new MapPoint(new MapCoord(column, row));
                 Grid[column, row] = mapPoint;
             }
+
             return mapPoint;
         }
 
@@ -123,12 +118,12 @@ namespace STSLite.Core.Maps
 
         private void AssignPointTypes()
         {
-            ForEachInRow(Grid, BossMapPoint.Coord.Row - 1, delegate (MapPoint p)
+            ForEachInRow(Grid, BossMapPoint.Coord.Row - 1, delegate(MapPoint p)
             {
                 p.PointType = MapPointType.Rest;
                 p.CanBeModified = false;
             });
-            ForEachInRow(Grid, 1, delegate (MapPoint p)
+            ForEachInRow(Grid, 1, delegate(MapPoint p)
             {
                 p.PointType = MapPointType.NormalMonster;
                 p.CanBeModified = false;
@@ -140,14 +135,17 @@ namespace STSLite.Core.Maps
             {
                 pointTypesToBeAssigned.Enqueue(MapPointType.Rest);
             }
+
             for (int num2 = 0; num2 < _pointTypeCounts.NumOfShops; num2++)
             {
                 pointTypesToBeAssigned.Enqueue(MapPointType.Shop);
             }
+
             for (int num3 = 0; num3 < _pointTypeCounts.NumOfElites; num3++)
             {
                 pointTypesToBeAssigned.Enqueue(MapPointType.EliteMonster);
             }
+
             for (int num4 = 0; num4 < _pointTypeCounts.NumOfUnknowns; num4++)
             {
                 pointTypesToBeAssigned.Enqueue(MapPointType.Unknown);
@@ -156,8 +154,8 @@ namespace STSLite.Core.Maps
             // Assign remaining types to random points
             {
                 List<MapPoint> unassignedMapPoints = (from p in GetAllMapPoints()
-                                                      where p.PointType == MapPointType.Unassigned
-                                                      select p).ToList();
+                    where p.PointType == MapPointType.Unassigned
+                    select p).ToList();
                 _rng.Shuffle(unassignedMapPoints);
 
                 foreach (MapPoint mapPoint in unassignedMapPoints)

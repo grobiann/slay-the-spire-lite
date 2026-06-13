@@ -8,7 +8,10 @@ namespace STSLite.UI
         private static readonly Dictionary<Type, UIInfo> mUIInfos = new Dictionary<Type, UIInfo>()
         {
             { typeof(UIMainMenu), new UIInfo("Prefabs/UI/UIMainMenuWindow", 0) },
-            { typeof(UICharacterSelectScreen), new UIInfo("Prefabs/UI/UICharacterSelectScreenWindow", 50) },
+            {
+                typeof(UICharacterSelectScreen),
+                new UIInfo("Prefabs/UI/SelectCharacter/UICharacterSelectScreenWindow", 50)
+            },
             { typeof(UITopBar), new UIInfo("Prefabs/UI/TopBar", 10) },
             { typeof(UILogo), new UIInfo("Prefabs/UI/UILogoWindow", 100) },
             { typeof(UIMapScreen), new UIInfo("Prefabs/UI/MapScreen/UIMapScreenWindow", 100) },

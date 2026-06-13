@@ -8,11 +8,11 @@ namespace STSLite.UI
     {
         public static UITopBar Instance { get; private set; }
 
-        [FormerlySerializedAs("_textHP")]
-        [SerializeField] private TMP_Text _textHp;
+        [FormerlySerializedAs("_textHP")] [SerializeField]
+        private TMP_Text _textHp;
 
-        [FormerlySerializedAs("_textGold")]
-        [SerializeField] private TMP_Text _textGold;
+        [FormerlySerializedAs("_textGold")] [SerializeField]
+        private TMP_Text _textGold;
 
         // TODO: Positions
         // TODO: Current Stage Info

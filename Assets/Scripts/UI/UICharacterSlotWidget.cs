@@ -3,6 +3,8 @@ using STSLite.Core.Multiplayer.Game.Lobby;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using STSLite.Core;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +13,10 @@ namespace STSLite.UI
     public class UICharacterSlotWidget : MonoBehaviour
     {
         [SerializeField] private Button _buttonSelect;
-        [SerializeField] private Text _textName;
-        [SerializeField] private Text _textStats;
-        [SerializeField] private Text _textPlayers;
+        [SerializeField] private TMP_Text _textName;
+        [SerializeField] private Image _imagePortrait;
+        [SerializeField] private TMP_Text _textStats;
+        [SerializeField] private TMP_Text _textPlayers;
         [SerializeField] private GameObject _objectSelected;
 
         private CharacterDefinition _character;
@@ -28,6 +31,7 @@ namespace STSLite.UI
             SetText(_textName, character.Name);
             SetText(_textStats, $"HP {character.BaseHealth}  ATK {character.BaseAttack}  DEF {character.BaseDefense}");
             SetText(_textPlayers, string.Empty);
+            SetImage(character.IconPath.ToSprite());
 
             if (_buttonSelect != null)
             {
@@ -52,7 +56,7 @@ namespace STSLite.UI
         public void SetSelected(CharacterDefinition selectedCharacter)
         {
             bool selected = _character != null && selectedCharacter != null && _character.Id == selectedCharacter.Id;
-            if (_objectSelected != null)
+            if (_objectSelected)
             {
                 _objectSelected.SetActive(selected);
             }
@@ -98,11 +102,19 @@ namespace STSLite.UI
             }
         }
 
-        private void SetText(Text text, string value)
+        private void SetText(TMP_Text text, string value)
         {
             if (text != null)
             {
                 text.text = value;
+            }
+        }
+
+        private void SetImage(Sprite sprite)
+        {
+            if (_imagePortrait)
+            {
+                _imagePortrait.sprite = sprite;
             }
         }
     }

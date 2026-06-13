@@ -20,9 +20,11 @@ namespace STSLite.Core.Runs
                 {
                     _instance = new RunManager();
                 }
+
                 return _instance;
             }
         }
+
         private static RunManager _instance;
 
         private long _startTime;
@@ -45,7 +47,6 @@ namespace STSLite.Core.Runs
 
         public void Launch()
         {
-
         }
 
         public async UniTask EnterAct(int actIndex)
@@ -85,7 +86,6 @@ namespace STSLite.Core.Runs
             //NMapScreen.Instance?.SetTravelEnabled(enabled: false);
             //NRunMusicController.Instance?.UpdateMusic();
             //UpdateRichPresence();
-
         }
 
         private async UniTask GenerateMap()
@@ -107,6 +107,7 @@ namespace STSLite.Core.Runs
             {
                 throw new Exception($"Attempted to enter invalid map coord {coord}");
             }
+
             MapPoint mapPoint = RunState.Map.GetPoint(coord);
             //NMapScreen.Instance?.InitMarker(coord);
             //NMapScreen.Instance?.RefreshAllMapPointVotes();
@@ -201,7 +202,7 @@ namespace STSLite.Core.Runs
                 case RoomType.NormalMonster:
                 case RoomType.EliteMonster:
                 case RoomType.BossMonster:
-                    //return new CombatRoom();
+                //return new CombatRoom();
                 case RoomType.Shop:
                     return new MerchantRoom();
                 case RoomType.RestSite:
@@ -243,12 +244,10 @@ namespace STSLite.Core.Runs
 
         public async UniTask FinalizeStartingRelics()
         {
-
         }
 
         public void GenerateRooms()
         {
-
         }
     }
 }

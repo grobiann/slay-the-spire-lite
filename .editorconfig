@@ -1,4 +1,13 @@
-﻿[*.cs]
+[*.cs]
 
-# CS8632: nullable 참조 형식에 대한 주석은 코드에서 '#nullable' 주석 컨텍스트 내에만 사용되어야 합니다.
+# Allow nullable reference annotations such as SomeType? without requiring a
+# per-file #nullable directive, while keeping nullable flow warnings disabled.
+build_property.Nullable = annotations
+
+# Prefer C# nullable shorthand, for example int? instead of Nullable<int>.
+dotnet_style_predefined_type_for_locals_parameters_members = true:suggestion
+dotnet_style_predefined_type_for_member_access = true:suggestion
+dotnet_diagnostic.IDE0049.severity = suggestion
+
+# CS8632: nullable reference annotations must be used within a '#nullable' context.
 dotnet_diagnostic.CS8632.severity = none

@@ -12,6 +12,8 @@ namespace STSLite.Core.Runs
             Definition = definition;
         }
 
-        public virtual void AfterCreated() { }
+        public virtual void AfterCreated()
+        {
+        }
     }
 }

@@ -27,11 +27,9 @@ namespace STSLite.Core.Models
 
     public class Act2 : ActDefinition
     {
-
     }
 
     public class Act3 : ActDefinition
     {
-
     }
 }

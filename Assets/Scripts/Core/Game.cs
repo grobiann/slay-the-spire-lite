@@ -41,10 +41,7 @@ namespace STSLite.Core
 
         private async UniTask GameStartup()
         {
-            // 가나다
             // GitHelper.Initialize();
-
-            
             SaveManager.Instance.TryFirstTimeCloudSync();
             SaveManager.Instance.SyncCloudToLocal();
 
@@ -81,7 +78,8 @@ namespace STSLite.Core
             await UIBlackScreen.Off();
         }
 
-        public async UniTask StartNewSinglePlayerRun(CharacterDefinition character, IReadOnlyList<ModifierDefinition> modifiers, string seed, GameMode gameMode)
+        public async UniTask StartNewSinglePlayerRun(CharacterDefinition character,
+            IReadOnlyList<ModifierDefinition> modifiers, string seed, GameMode gameMode)
         {
             RunState runState = RunState.CreateForNewRun(
                 players: new List<Player> { Player.CreateForNewRun(character, 1uL) },

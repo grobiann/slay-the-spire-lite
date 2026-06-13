@@ -7,6 +7,5 @@ namespace STSLite.Core.Multiplayer.Transport
         void OnPeerConnected(ulong peerId);
         void OnPeerDisconnected(ulong peerId, NetErrorInfo reason);
         void OnDisconnected(NetErrorInfo reason);
-
     }
 }

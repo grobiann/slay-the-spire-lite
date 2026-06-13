@@ -20,12 +20,13 @@ namespace STSLite.UI
     {
         public static UICharacterSelectScreen Instance { get; private set; }
 
-        [SerializeField] private List<UICharacterSlotWidget> _widgetsCharacterSlot = new List<UICharacterSlotWidget>();
+        [SerializeField] private UILobbyPlayerContainer _lobbyPlayerContainer;
+        [SerializeField] private SlotContainer<UICharacterSlotWidget> _characterSlots;
         [SerializeField] private Text _textTitle;
         [SerializeField] private Text _textDescription;
         [SerializeField] private Text _textPlayers;
         [SerializeField] private Text _textStatus;
-        [SerializeField] private Button _buttonEmbark;
+        [SerializeField] private Button _buttonReady;
         [SerializeField] private Button _buttonUnready;
         [SerializeField] private Button _buttonBack;
 
@@ -134,7 +135,8 @@ namespace STSLite.UI
             RefreshView();
         }
 
-        public void BeginRun(IReadOnlyList<Player> players, IReadOnlyList<ModifierDefinition> modifiers, string seed, GameMode gameMode)
+        public void BeginRun(IReadOnlyList<Player> players, IReadOnlyList<ModifierDefinition> modifiers, string seed,
+            GameMode gameMode)
         {
             SetInteractable(false);
             SetText(_textStatus, "Starting run...");
@@ -147,9 +149,11 @@ namespace STSLite.UI
             SetInteractable(false);
         }
 
-        private async UniTask StartRun(IReadOnlyList<Player> players, IReadOnlyList<ModifierDefinition> modifiers, string seed, GameMode gameMode)
+        private async UniTask StartRun(IReadOnlyList<Player> players, IReadOnlyList<ModifierDefinition> modifiers,
+            string seed, GameMode gameMode)
         {
-            RunState runState = RunState.CreateForNewRun(players, DefinitionDB.ActDefinitions, modifiers, gameMode, seed);
+            RunState runState =
+                RunState.CreateForNewRun(players, DefinitionDB.ActDefinitions, modifiers, gameMode, seed);
             RunManager.Instance.SetupNewSinglePlayer(runState);
 
             await PreloadManager.LoadRunAssets();
@@ -165,30 +169,20 @@ namespace STSLite.UI
         private void BindCharacterSlots()
         {
             IReadOnlyList<CharacterDefinition> characters = DefinitionDB.CharacterDefinitions;
-            for (int i = 0; i < _widgetsCharacterSlot.Count; ++i)
+            _characterSlots.SetSize(characters.Count);
+            for (int i = 0; i < characters.Count; ++i)
             {
-                UICharacterSlotWidget widget = _widgetsCharacterSlot[i];
-                if (widget == null)
-                {
-                    continue;
-                }
-
-                if (i >= characters.Count)
-                {
-                    widget.Clear();
-                    continue;
-                }
-
-                widget.Bind(characters[i], SelectCharacter);
+                UICharacterSlotWidget slot = _characterSlots[i];
+                slot.Bind(characters[i], SelectCharacter);
             }
         }
 
         private void BindButtons()
         {
-            if (_buttonEmbark != null)
+            if (_buttonReady != null)
             {
-                _buttonEmbark.onClick.RemoveListener(OnEmbarkClicked);
-                _buttonEmbark.onClick.AddListener(OnEmbarkClicked);
+                _buttonReady.onClick.RemoveListener(OnReadyClicked);
+                _buttonReady.onClick.AddListener(OnReadyClicked);
             }
 
             if (_buttonUnready != null)
@@ -207,7 +201,8 @@ namespace STSLite.UI
         private void SelectCharacter(CharacterDefinition character)
         {
             _selectedCharacter = character;
-            SetText(_textDescription, $"{character.Description}\n\nHP {character.BaseHealth}  ATK {character.BaseAttack}  DEF {character.BaseDefense}");
+            SetText(_textDescription,
+                $"{character.Description}\n\nHP {character.BaseHealth}  ATK {character.BaseAttack}  DEF {character.BaseDefense}");
 
             if (_lobby != null && HasLocalPlayer())
             {
@@ -217,7 +212,7 @@ namespace STSLite.UI
             RefreshView();
         }
 
-        private void OnEmbarkClicked()
+        private void OnReadyClicked()
         {
             if (_lobby == null)
             {
@@ -225,7 +220,7 @@ namespace STSLite.UI
             }
 
             SetCharacterSlotsInteractable(false);
-            SetButtonInteractable(_buttonEmbark, false);
+            SetButtonInteractable(_buttonReady, false);
             SetUnreadyVisible(_lobby.NetService.Type != NetGameType.Singleplayer);
             SetButtonInteractable(_buttonUnready, true);
             SetText(_textStatus, "Ready. Waiting for the other player...");
@@ -242,7 +237,7 @@ namespace STSLite.UI
 
             _lobby.SetReady(false);
             SetUnreadyVisible(false);
-            SetButtonInteractable(_buttonEmbark, true);
+            SetButtonInteractable(_buttonReady, true);
             SetCharacterSlotsInteractable(true);
             RefreshView();
         }
@@ -258,22 +253,23 @@ namespace STSLite.UI
             SetText(_textTitle, _selectedCharacter == null ? "Choose a Character" : _selectedCharacter.Name);
             SetText(_textPlayers, BuildPlayersText());
             RefreshCharacterSlots();
+            _lobbyPlayerContainer.Initialize(_lobby);
 
             if (_lobby == null)
             {
                 SetText(_textStatus, "Lobby is not initialized.");
-                SetButtonInteractable(_buttonEmbark, false);
+                SetButtonInteractable(_buttonReady, false);
                 return;
             }
 
             if (!HasLocalPlayer())
             {
                 SetText(_textStatus, "Joining lobby...");
-                SetButtonInteractable(_buttonEmbark, false);
+                SetButtonInteractable(_buttonReady, false);
                 return;
             }
 
-            SetButtonInteractable(_buttonEmbark, _selectedCharacter != null && !_lobby.LocalPlayer.isReady);
+            SetButtonInteractable(_buttonReady, _selectedCharacter != null && !_lobby.LocalPlayer.isReady);
 
             if (_lobby.IsAboutToBeginGame())
             {
@@ -295,15 +291,10 @@ namespace STSLite.UI
 
         private void RefreshCharacterSlots()
         {
-            foreach (UICharacterSlotWidget widget in _widgetsCharacterSlot)
+            foreach (UICharacterSlotWidget slot in _characterSlots)
             {
-                if (widget == null)
-                {
-                    continue;
-                }
-
-                widget.SetSelected(_selectedCharacter);
-                widget.SetLobbyPlayers(_lobby?.Players, _lobby?.NetService.NetId ?? 0uL);
+                slot.SetSelected(_selectedCharacter);
+                slot.SetLobbyPlayers(_lobby?.Players, _lobby?.NetService.NetId ?? 0uL);
             }
         }
 
@@ -346,14 +337,14 @@ namespace STSLite.UI
         private void SetInteractable(bool interactable)
         {
             SetButtonInteractable(_buttonBack, interactable);
-            SetButtonInteractable(_buttonEmbark, interactable);
+            SetButtonInteractable(_buttonReady, interactable);
             SetButtonInteractable(_buttonUnready, interactable);
             SetCharacterSlotsInteractable(interactable);
         }
 
         private void SetCharacterSlotsInteractable(bool interactable)
         {
-            foreach (UICharacterSlotWidget widget in _widgetsCharacterSlot)
+            foreach (UICharacterSlotWidget widget in _characterSlots)
             {
                 if (widget != null)
                 {
@@ -415,11 +406,13 @@ namespace STSLite.UI
             {
             }
 
-            public void RegisterMessageHandler<T>(MessageHandlerDelegate<T> messageHandlerDelegate) where T : INetMessage
+            public void RegisterMessageHandler<T>(MessageHandlerDelegate<T> messageHandlerDelegate)
+                where T : INetMessage
             {
             }
 
-            public void UnregisterMessageHandler<T>(MessageHandlerDelegate<T> messageHandlerDelegate) where T : INetMessage
+            public void UnregisterMessageHandler<T>(MessageHandlerDelegate<T> messageHandlerDelegate)
+                where T : INetMessage
             {
             }
 
