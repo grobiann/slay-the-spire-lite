@@ -6,6 +6,7 @@ using STSLite.UI;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using STSLite.Core.Multiplayer.Game;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ namespace STSLite.Core
     public class Game : MonoBehaviour
     {
         public static Game Instance { get; private set; }
+
+        public UIRemoteMouseCursorContainer UIRemoteCursorContainer { get; private set; }
 
         private void Awake()
         {
@@ -41,6 +44,8 @@ namespace STSLite.Core
 
         private async UniTask GameStartup()
         {
+            UIRemoteCursorContainer = UIManager.Instance.Show<UIRemoteMouseCursorContainer>();
+
             // GitHelper.Initialize();
             SaveManager.Instance.TryFirstTimeCloudSync();
             SaveManager.Instance.SyncCloudToLocal();

@@ -1,11 +1,13 @@
 using STSLite.Core.Entities.Multiplayer;
-using STSLite.Core.Logging;
 using STSLite.Core.Models;
 using STSLite.Core.Multiplayer.Messages.Lobby;
 using STSLite.Core.Runs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using Logger = STSLite.Core.Logging.Logger;
+using LogType = STSLite.Core.Logging.LogType;
 
 namespace STSLite.Core.Multiplayer.Game.Lobby
 {
@@ -18,6 +20,7 @@ namespace STSLite.Core.Multiplayer.Game.Lobby
 
         public INetGameService NetService { get; }
         public IStartRunLobbyListener LobbyListener { get; }
+        public PeerInputSynchronizer InputSynchronizer { get; }
         public int MaxPlayers { get; private set; }
         public int Ascension { get; private set; }
         public int MaxAscension { get; private set; }
@@ -37,6 +40,7 @@ namespace STSLite.Core.Multiplayer.Game.Lobby
             GameMode = gameMode;
             NetService = netService;
             LobbyListener = lobbyListener;
+            InputSynchronizer = new PeerInputSynchronizer(netService);
             MaxPlayers = maxPlayers;
             Seed = string.Empty;
             _logger = new Logger("StartRunLobby", LogType.Network);

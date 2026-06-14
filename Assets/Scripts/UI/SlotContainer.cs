@@ -19,6 +19,11 @@ namespace STSLite.UI
         private Queue<T> _pool = new();
         private bool _initialized;
 
+        private void Awake()
+        {
+            Initialize();
+        }
+
         public void SetSize(int size)
         {
             Initialize();
@@ -34,7 +39,7 @@ namespace STSLite.UI
             {
                 for (int i = _slots.Count; i < size; i++)
                 {
-                    GetFromPool();
+                    AddNewSlot();
                 }
             }
         }
@@ -44,7 +49,7 @@ namespace STSLite.UI
             ReturnToPool(slot);
         }
 
-        private T GetFromPool()
+        public T AddNewSlot()
         {
             T slot;
             if (_pool.Count > 0)

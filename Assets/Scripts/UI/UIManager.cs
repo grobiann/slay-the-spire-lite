@@ -50,6 +50,7 @@ namespace STSLite.UI
             T createdUi = Create<T>();
             _openedUis[uiType] = createdUi;
             SetStaticInstance(createdUi);
+            RefreshSiblingOrder(createdUi);
             createdUi.Begin();
             createdUi.gameObject.SetActive(true);
             createdUi.Resume();
@@ -144,6 +145,23 @@ namespace STSLite.UI
             {
                 Transition = transition;
             }
+        }
+
+        private void RefreshSiblingOrder(UIBase ui)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                var child = transform.GetChild(i).GetComponent<UIBase>();
+                var childInfo = UIRegistry.GetUIInfo(child?.GetType());
+                var uiInfo = UIRegistry.GetUIInfo(ui.GetType());
+                if (uiInfo.SortOrder < childInfo.SortOrder)
+                {
+                    ui.transform.SetSiblingIndex(i);
+                    return;
+                }
+            }
+
+            ui.transform.SetAsLastSibling();
         }
 
         private void ClearStaticInstance(UIBase ui)

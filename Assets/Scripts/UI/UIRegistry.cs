@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using STSLite.Core.Multiplayer.Game;
 
 namespace STSLite.UI
 {
@@ -17,6 +18,10 @@ namespace STSLite.UI
             { typeof(UIMapScreen), new UIInfo("Prefabs/UI/MapScreen/UIMapScreenWindow", 100) },
             { typeof(UICombatRoom), new UIInfo("Prefabs/UI/Room/UICombatRoomWindow", 200) },
             { typeof(UIBlackScreen), new UIInfo("Prefabs/UI/UIBlackScreenWindow", 1000) },
+            {
+                typeof(UIRemoteMouseCursorContainer),
+                new UIInfo("Prefabs/UI/SelectCharacter/UIRemoteMouseCursorContainer", 2000)
+            },
         };
 
         public static UIInfo GetUIInfo(Type uiType)

@@ -10,6 +10,7 @@ using STSLite.Core.Multiplayer.Serialization;
 using STSLite.Core.Runs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
@@ -56,6 +57,16 @@ namespace STSLite.UI
             }
         }
 
+        public void InitializeSingleplayer()
+        {
+            CleanUpLobby(false);
+            _lobby = new StartRunLobby(GameMode.Standard, new SingleplayerGameServiceAdapter(), this, 1);
+            _lobby.AddLocalHostPlayer();
+            SelectCharacter(DefinitionDB.CharacterDefinitions[0]);
+            RefreshView();
+            SetInteractable(true);
+        }
+
         public void InitializeMultiplayerAsHost(INetGameService gameService, int maxPlayers)
         {
             if (gameService.Type != NetGameType.Host)
@@ -69,16 +80,7 @@ namespace STSLite.UI
             SelectCharacter(DefinitionDB.CharacterDefinitions[0]);
             RefreshView();
             SetInteractable(true);
-        }
-
-        public void InitializeSingleplayer()
-        {
-            CleanUpLobby(false);
-            _lobby = new StartRunLobby(GameMode.Standard, new SingleplayerGameServiceAdapter(), this, 1);
-            _lobby.AddLocalHostPlayer();
-            SelectCharacter(DefinitionDB.CharacterDefinitions[0]);
-            RefreshView();
-            SetInteractable(true);
+            AfterInitialized();
         }
 
         public void InitializeMultiplayerAsClient(INetGameService gameService)
@@ -98,6 +100,7 @@ namespace STSLite.UI
 
             RefreshView();
             SetInteractable(true);
+            AfterInitialized();
         }
 
         public void PlayerConnected(LobbyPlayer player)
@@ -147,6 +150,12 @@ namespace STSLite.UI
         {
             SetText(_textStatus, $"Disconnected: {info.Reason}");
             SetInteractable(false);
+        }
+
+        private void AfterInitialized()
+        {
+            Game.Instance.UIRemoteCursorContainer.Initialize(_lobby.InputSynchronizer,
+                _lobby.Players.Select((LobbyPlayer p) => p.id).ToList());
         }
 
         private async UniTask StartRun(IReadOnlyList<Player> players, IReadOnlyList<ModifierDefinition> modifiers,
