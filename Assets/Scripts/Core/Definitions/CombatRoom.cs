@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using STSLite.Core.Maps;
 using STSLite.Core.Runs;
@@ -52,9 +54,23 @@ namespace STSLite.Core.Models
     public class CombatState
     {
         public RunState RunState { get; }
+        public IReadOnlyList<Creature> Allies { get; }
+        public IReadOnlyList<Creature> Enemies { get; }
+        public IReadOnlyList<Creature> Creatures { get; }
+        public IReadOnlyList<Player> Players { get; }
+        public IReadOnlyList<Creature> PlayerCreatures { get; }
+        public IReadOnlyList<ModifierDefinition> Modifiers { get; }
+        public IReadOnlyList<Creature> EscapedCreatures { get; }
+        public int RoundNumber { get; set; }
+        public CombatSide CurrentSide { get; set; }
 
+        public event Action<CombatState> CreaturesChanged;
+        
         public CombatState(RunState runState)
         {
+            RunState = runState;
+            RoundNumber = 1;
+            CurrentSide = CombatSide.Player;
             RunState = runState;
         }
 

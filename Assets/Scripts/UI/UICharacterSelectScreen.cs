@@ -262,8 +262,6 @@ namespace STSLite.UI
             SetText(_textTitle, _selectedCharacter == null ? "Choose a Character" : _selectedCharacter.Name);
             SetText(_textPlayers, BuildPlayersText());
             RefreshCharacterSlots();
-            _lobbyPlayerContainer.Initialize(_lobby);
-
             if (_lobby == null)
             {
                 SetText(_textStatus, "Lobby is not initialized.");
@@ -271,6 +269,8 @@ namespace STSLite.UI
                 return;
             }
 
+            _lobbyPlayerContainer.Initialize(_lobby);
+            
             if (!HasLocalPlayer())
             {
                 SetText(_textStatus, "Joining lobby...");

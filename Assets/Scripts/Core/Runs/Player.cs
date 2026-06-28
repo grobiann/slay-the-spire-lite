@@ -46,5 +46,15 @@ namespace STSLite.Core.Runs
         public void InitializeSeed(string seed)
         {
         }
+
+        public void ResetCombatState()
+        {
+            
+        }
+
+        public void PopulateCombatState(CombatState state)
+        {
+            
+        }
     }
 }
